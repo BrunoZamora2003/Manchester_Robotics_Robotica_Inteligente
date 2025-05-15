@@ -1,0 +1,73 @@
+Visualization Manager:
+  Displays:
+    # —————————————————————
+    # 1) Grid (sin cambios)
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Reference Frame: odom
+      Cell Size: 1
+      Plane: XY
+      Plane Cell Count: 20
+      Color: 160; 160; 164
+      Line Style:
+        Value: Lines
+        Line Width: 0.03
+      Offset: {X: 0, Y: 0, Z: 0}
+    # —————————————————————
+    # 2) Odometry corregida
+    - Class: rviz_default_plugins/Odometry
+      Name: Corrected Odometry
+      Enabled: true
+      Topic: /corrected_odom      # <— antes /odom
+      Position Tolerance: 0.1
+      Angle Tolerance: 0.1
+      Keep: 100
+      Shape:
+        Value: Arrow
+        Color: 255; 25; 0
+        Axes Length: 1
+        Axes Radius: 0.1
+        Head Length: 0.3
+        Head Radius: 0.1
+      Covariance:
+        Position:
+          Value: true
+          Color: 204; 51; 204
+          Alpha: 0.3
+        Orientation:
+          Value: true
+          Color: 255; 255; 127
+          Alpha: 0.5
+    # —————————————————————
+    # 3) Meta actual (Pose)
+    - Class: rviz_default_plugins/Pose
+      Name: Goal Pose
+      Enabled: true
+      Topic: /goal_pose          # <— muestra el waypoint actual
+      Color: 0; 255; 0
+      Scale: 1.0
+      Shape:
+        Value: Arrow
+        Head Length: 0.5
+        Head Radius: 0.1
+        Shaft Radius: 0.02
+        Shaft Length: 1.0
+    # —————————————————————
+    # 4) (Opcional) Tiempo objetivo
+    - Class: rviz_default_plugins/Topic
+      Name: Goal Time
+      Enabled: true
+      Topic: /goal_time          # <— número en pantalla
+      Displayed Message Type: std_msgs/Float32
+  Global Options:
+    Fixed Frame: odom
+    Background Color: 48; 48; 48
+    Frame Rate: 30
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Target Frame: odom
+      Distance: 10
+      Yaw: 0.7854
+      Pitch: 0.7854
